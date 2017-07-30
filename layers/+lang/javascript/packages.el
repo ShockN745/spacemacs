@@ -228,7 +228,8 @@
       (add-hook 'js2-mode-hook 'mocha)
       (spacemacs/declare-prefix-for-mode 'js2-mode "mt" "test")
       (spacemacs/set-leader-keys-for-major-mode 'js2-mode
-        "tt" 'mocha-test-project))
+        "tt" 'mocha-test-project)
+      (add-hook 'after-save-hook 'mocha-test-project))
     :config
     (setq mocha-options "--recursive")
     (setq mocha-reporter "spec")))
