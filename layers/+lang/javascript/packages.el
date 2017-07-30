@@ -27,6 +27,7 @@
     web-beautify
     skewer-mode
     livid-mode
+    mocha
     ))
 
 (defun javascript/init-coffee-mode ()
@@ -218,3 +219,13 @@
             :mode livid-mode
             :documentation "Live evaluation of JS buffer change."
             :evil-leader-for-mode (js2-mode . "sa"))))
+
+(defun javascript/init-mocha ()
+  (use-package mocha
+    :defer t
+    :init
+    (progn
+      (add-hook 'js2-mode-hook 'mocha)
+      (spacemacs/declare-prefix-for-mode 'js2-mode "mt" "test")
+      (spacemacs/set-leader-keys-for-major-mode 'js2-mode
+        "tt" 'mocha-test-project))))
